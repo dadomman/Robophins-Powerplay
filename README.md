@@ -1,6 +1,8 @@
 ## NOTICE
 
-This repository contains the public FTC SDK for the Freight Frenzy (2021-2022) competition season.
+This repository contains the 3216 Robophins code used in the 2022-2023 FTC Powerplay season
+
+The following text is the ReadMe from the forked FTC-Robot-Controller which contains lots information on how to download the project and clone it for yourself. If you have trouble setting up th project on your device you can ask a Robophins member at club or contact me.
 
 ## Welcome!
 This GitHub repository contains the source code that is used to build an Android app to control a *FIRST* Tech Challenge competition robot.  To use this SDK, download/clone the entire project to your local computer.
