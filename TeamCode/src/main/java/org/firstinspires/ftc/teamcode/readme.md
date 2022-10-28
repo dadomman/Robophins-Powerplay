@@ -1,10 +1,13 @@
 ## TeamCode Module
 
+<<<<<<< HEAD
 Welcome Robophins!
+=======
+Welcome Robophins!!!!!
+>>>>>>> fd4d11ea6b517e2f82c91164f3c5665e3e4beba5
 
-This module, TeamCode, is the place where you will write/paste the code for your team's
-robot controller App. This module is currently empty (a clean slate) but the
-process for adding OpModes is straightforward.
+This module, TeamCode, is the place where you will write/paste the code for our team's
+robot. The process for adding OpModes is straightforward.
 
 ## Creating your own OpModes
 
