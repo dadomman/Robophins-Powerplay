@@ -1,6 +1,6 @@
 ## TeamCode Module
 
-Welcome robophins!!!!!
+Welcome Robophinsnc :)
 
 This module, TeamCode, is the place where you will write/paste the code for our team's
 robot. The process for adding OpModes is straightforward.
