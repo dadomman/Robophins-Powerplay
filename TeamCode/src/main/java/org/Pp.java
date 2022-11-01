@@ -1,4 +1,3 @@
-public @@ -0,0 +1,103 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -7,10 +6,11 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.Range;
 
 import java.util.Map;
 
-public class Ppbot{
+class Ppbot{
     public DcMotor BLeft = null;
     public DcMotor BRight = null;
     public DcMotor FLeft = null;
@@ -39,6 +39,7 @@ public class Ppbot{
         FLeft.setPower(0.0);
         FRight.setPower(0.0);
         Slider.setPower(0.0);
+        Take.setPosition(1.0);
 
         BLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         BRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -56,7 +57,7 @@ public class Pp extends LinearOpMode{
     double x;
     double y;
     double rx;
-    double Armpos = 0.0;
+    double Armpos = 1.0;
     double Slidepos = 0.0;
     final double Armspeed = 0.1;
     final double Slidespeed = 0.5;
@@ -83,14 +84,37 @@ public class Pp extends LinearOpMode{
                 robot.BRight.setPower(-rx);
                 robot.FLeft.setPower(rx);
                 robot.FRight.setPower(rx);
+
             }
-            else {
+            else if ((gamepad1.right_bumper || (Math.abs(gamepad1.right_trigger) > 0.0)) && Slidepos != 0.0)
+                Slidepos = 0.0;
+            else if (gamepad1.right_bumper)
+                Slidepos += Slidespeed;
+            else if (Math.abs(gamepad1.right_trigger) > 0.0)
+                Slidepos -= Slidespeed;
+            else if (gamepad1.x)
+                Armpos -= Armspeed;
+            else if (gamepad1.b)
+                Armpos += Armspeed;
+            else if (Math.abs(y2) >= Math.abs(x2)){
                 robot.BLeft.setPower(y2);
                 robot.BRight.setPower(y2);
+                robot.FLeft.setPower(y2);
+                robot.FRight.setPower(y2);
+
+            }
+            else if (Math.abs(x2) > (Math.abs(y2))){
+                robot.BLeft.setPower(x2);
+                robot.BRight.setPower(x2);
                 robot.FLeft.setPower(x2);
                 robot.FRight.setPower(x2);
 
             }
+
+            robot.Slider.setPower(Slidepos);
+
+            Armpos = Range.clip(Armpos, 0.0, 1.0);
+            robot.Take.setPosition(Armpos);
 
             telemetry.addData("x","%.2f", x);
             telemetry.addData("y","%.2f", y);
@@ -101,6 +125,4 @@ public class Pp extends LinearOpMode{
         }
     }
 
-} {
-    
 }
