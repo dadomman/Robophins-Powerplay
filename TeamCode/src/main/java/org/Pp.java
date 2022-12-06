@@ -92,6 +92,8 @@ public class Pp extends LinearOpMode{
                 Slidepos += Slidespeed;
             else if (Math.abs(gamepad1.right_trigger) > 0.0)
                 Slidepos -= Slidespeed;
+            else if (gamepad1.left_bumper)
+                Slidepos -= 0.5*(Slidespeed);
             else if (gamepad1.x)
                 Armpos -= Armspeed;
             else if (gamepad1.b)
